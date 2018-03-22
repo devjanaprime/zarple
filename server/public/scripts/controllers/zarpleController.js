@@ -5,6 +5,14 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
     const END = 2;
     vm.gameState = START;
     vm.maxPoints = 0;
+    maxTeams = 2;
+    vm.finishTurn = () => {
+        vm.turn++;
+        if( vm.turn > maxTeams-1 ){
+            vm.turn = 0;
+        }
+    }; //end finishTurn
+
     vm.startGame = () => {
         if( vm.purpleBouncer && vm.purpleCatcher && vm.orangeBouncer && vm.orangeCatcher){
             vm.maxPoints = Number( vm.maxPointsIn );

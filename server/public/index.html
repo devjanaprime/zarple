@@ -40,21 +40,29 @@
                 </div>
             </section>
             <section id="currentGameSection" ng-if="ZC.gameState == 1">
-                <h2>Current Game</h2>
                     <center>
                         <h1><span class="purple">{{ ZC.purplePoints }}</span> | <span class="orange">{{ ZC.orangePoints }}</span></h1>
                     </center>
                     <div class='col-sm-3'></div>
                     <div class='col-sm-6' ng-if="ZC.turn==0">
                         <h4>Up now:</h4>
-                        <p class="purple">Bouncer: {{ ZC.purpleBouncer }}, Catcher: {{ ZC.purpleCatcher }}</p>
+                        <h3 class="purple">Bouncer: {{ ZC.purpleBouncer }}, Catcher: {{ ZC.purpleCatcher }}</h3>
                     </div>
                     <div class='col-sm-6' ng-if="ZC.turn==1">
                         <h4>Up now:</h4>
-                        <p class="orange">Bouncer: {{ ZC.orangeBouncer }}, Catcher: {{ ZC.orangeCatcher }}</p>
+                        <h3 class="orange">Bouncer: {{ ZC.orangeBouncer }}, Catcher: {{ ZC.orangeCatcher }}</h3>
                     </div>
-                    <div class='col-sm-3'></div>
-                    <button ng-click="ZC.finishTurn()">Finish Turn</button>
+                    <hr>
+                    <div class="container">
+                        <img src="images/target1.png" width="32%">
+                        <img src="images/target2.png" width="32%">
+                        <img src="images/wallTarget.png" width="32%">
+                        <img src="images/target3.png" width="32%">
+                        <img src="images/target4.png" width="32%">
+                        <img src="images/cup.png" width="32%">
+                    </div>
+                    <hr>
+                    <button ng-click="ZC.finishTurn()" class="btn-default btn-lg btn-block">Finish Turn</button>
             </section>
             <section id="gameEndSecion"  ng-if="ZC.gameState == 2">
                 <h2>Winner!</h2>
