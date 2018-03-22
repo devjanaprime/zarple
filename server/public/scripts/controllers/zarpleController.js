@@ -3,10 +3,11 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
     const START = 0;
     const INPROGRESS = 1;
     const END = 2;
+    const HOW = 3;
     vm.gameState = START;
     let maxTeams = 2;
     let targets = [ false, false, false, false, false, false ];
-    
+    vm.penalty = 0;
     vm.checkForWinner = () => {
         if( vm.purplePoints >= vm.maxPoints || vm.orangePoints >= vm.maxPoints ){
             vm.gameState = END; 
@@ -21,13 +22,17 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
     };
 
     vm.finishTurn = () => {
-        let turnPoints = targets.filter(v => v).length;
+        let turnPoints = 0;
+        for( let i=0; i< targets.length; i++ ){
+            if( targets[ i ] ){
+                turnPoints++;
+            }
+        }
         if( turnPoints >= 3 ){
             // bonus
             turnPoints++;
         }
         if( vm.turn == 0 ){
-            vm.purplePoints += turnPoints;
             for( let i = 0; i<4; i++ ){
                 if( targets[ i ] && !vm.purpleTargets[ i ] ){
                     vm.purpleTargets[ i ] = true;
@@ -37,9 +42,10 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
                     }
                 } 
             }
+            turnPoints -= vm.penalty;
+            vm.purplePoints += turnPoints;
         }
         else{
-            vm.orangePoints += turnPoints;
             for( let i = 0; i<4; i++ ){
                 if( targets[ i ] && !vm.orangeTargets[ i ] ){
                     vm.orangeTargets[ i ] = true;
@@ -49,15 +55,22 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
                     }
                 } 
             }
+            turnPoints -= vm.penalty;
+            vm.orangePoints += turnPoints;
         }
         targets = [ false, false, false, false, false, false ];
         vm.clearTargets();
+        penalty = 0;
         vm.turn++;
         if( vm.turn > maxTeams-1 ){
             vm.turn = 0;
         }
         vm.checkForWinner();
     }; //end finishTurn
+
+    vm.showHelp = () => {
+        vm.gameState = 3;
+    }; // end showHelp
 
     vm.startGame = () => {
         if( vm.purpleBouncer && vm.purpleCatcher && vm.orangeBouncer && vm.orangeCatcher){
@@ -80,6 +93,19 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
             alert( 'need names, yo!' );
         } // end empty name(s)
     }; // end startGame
+
+    vm.showNewGame = () => {
+        vm.gameState = 0;
+    }; // end showNewGame
+
+    vm.talkShit = () => {
+        if( vm.turn == 0 ){
+            vm.purplePoints--;
+        }
+        else{
+            vm.orangePoints--;
+        }
+    }; //end talkShit
 
     vm.targetClick = ( index ) => {
         if( targets[ index ] ) targets[ index ] = false;
