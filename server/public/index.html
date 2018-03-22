@@ -6,20 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Zarple</title>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/zarple.css">
     <script src="vendors/angular.min.js"></script>
-    <script src="scripts/controllers/zarpleController.js"></script>
+    <script src="scripts/client.js"></script>
     <script src="scripts/services/zarpleService.js"></script>
+    <script src="scripts/controllers/zarpleController.js"></script>
 </head>
-<body>
-    <h1>Zarple!</h1>
-    <section id="newGameSection">
-        <h2>New Game</h2>
-    </section>
-    <section id="currentGameSection">
-        <h2>Current Game</h2>
-    </section>
-    <section id="gameEndSecion">
-        <h2>Winner1</h2>
-    </section>
+<body ng-app="myApp" ng-controller="ZarpleController as ZC">
+    <div class='container'>
+            <img src='images/zarpleLogo.png' width="100%">
+            <section id="newGameSection" ng-if="ZC.gameState == 0">
+                <h2>New Game to: <select>
+                        <option>9</option>
+                        <option>27</option>
+                        <option>81</option>
+                    </select> Pts</h2>
+                <div class='row'>
+
+                    <div class='col-sm-1'></div>
+                    <div class='col-sm-5'>
+                        <h3>Team Purple</h3>
+                        <input type="text" ng-model="ZC.purpleBouncer">
+                        <input type="text" ng-model="ZC.purpleCatcher">
+                    </div>
+                    <div class='col-sm-5'>
+                        <h3>Team Orange</h3>
+                        <input type="text" ng-model="ZC.orangeBouncer">
+                        <input type="text" ng-model="ZC.orangeCatcher">
+                    </div>
+                    <div class='col-sm-1'></div>
+                    <br>
+                    <div><button ng-click='ZC.startGame()' class="btn-default btn-lg btn-block">Start Game</button></div>
+                </div>
+            </section>
+            <section id="currentGameSection" ng-if="ZC.gameState == 1">
+                <h2>Current Game</h2>
+                    <center>
+                        <h1><span class="purple">{{ ZC.purplePoints }}</span> | <span class="orange">{{ ZC.orangePoints }}</span></h1>
+                    </center>
+                    <div class='col-sm-3'></div>
+                    <div class='col-sm-6' ng-if="ZC.turn==0">
+                        <h4>Up now:</h4>
+                        <p class="purple">Bouncer: {{ ZC.purpleBouncer }}, Catcher: {{ ZC.purpleCatcher }}</p>
+                    </div>
+                    <div class='col-sm-6' ng-if="ZC.turn==1">
+                        <h4>Up now:</h4>
+                        <p class="orange">Bouncer: {{ ZC.orangeBouncer }}, Catcher: {{ ZC.orangeCatcher }}</p>
+                    </div>
+                    <div class='col-sm-3'></div>
+                    <button ng-click="ZC.finishTurn()">Finish Turn</button>
+            </section>
+            <section id="gameEndSecion"  ng-if="ZC.gameState == 2">
+                <h2>Winner!</h2>
+            </section>
+    </div>
 </body>
 </html>
