@@ -16,11 +16,11 @@
     <div class='container'>
             <img src='images/zarpleLogo.png' width="100%">
             <section id="newGameSection" ng-if="ZC.gameState == 0">
-                <h2>New Game to: <select>
+                <h4>New Game to: <select class="form-control" ng-model="ZC.maxPointsIn">
                         <option>9</option>
-                        <option>27</option>
+                        <option selected>27</option>
                         <option>81</option>
-                    </select> Pts</h2>
+                    </select> </h4>
                 <div class='row'>
 
                     <div class='col-sm-1'></div>
@@ -42,6 +42,7 @@
             <section id="currentGameSection" ng-if="ZC.gameState == 1">
                     <center>
                         <h1><span class="purple">{{ ZC.purplePoints }}</span> | <span class="orange">{{ ZC.orangePoints }}</span></h1>
+                        <h3>Win at: {{ ZC.maxPoints }}</h3>
                     </center>
                     <div class='col-sm-3'></div>
                     <div class='col-sm-6' ng-if="ZC.turn==0">
@@ -54,18 +55,28 @@
                     </div>
                     <hr>
                     <div class="container">
-                        <img src="images/target1.png" width="32%">
-                        <img src="images/target2.png" width="32%">
-                        <img src="images/wallTarget.png" width="32%">
-                        <img src="images/target3.png" width="32%">
-                        <img src="images/target4.png" width="32%">
-                        <img src="images/cup.png" width="32%">
+                        <img src="images/target1.png" width="32%" ng-click="ZC.targetClick( 0 )" id="target0" style="filter: grayscale( 100% )">
+                        <img src="images/target2.png" width="32%" ng-click="ZC.targetClick( 1 )" id="target1" style="filter: grayscale( 100% )">
+                        <img src="images/wallTarget.png" width="32%" ng-click="ZC.targetClick( 4 )" id="target4" style="filter: grayscale( 100% )">
+                        <img src="images/target3.png" width="32%" ng-click="ZC.targetClick( 2 )" id="target2" style="filter: grayscale( 100% )">
+                        <img src="images/target4.png" width="32%" ng-click="ZC.targetClick( 3 )" id="target3" style="filter: grayscale( 100% )">
+                        <img src="images/cup.png" width="32%" ng-click="ZC.targetClick( 5 )" id="target5" style="filter: grayscale( 100% )">
                     </div>
                     <hr>
                     <button ng-click="ZC.finishTurn()" class="btn-default btn-lg btn-block">Finish Turn</button>
             </section>
             <section id="gameEndSecion"  ng-if="ZC.gameState == 2">
                 <h2>Winner!</h2>
+                <div ng-if="ZC.purplePoints > ZC.orangePoints">
+                    <h1 class='purple'>PURPLE</h1>
+                    <h3 class="purple">Bouncer: {{ ZC.purpleBouncer }}, Catcher: {{ ZC.purpleCatcher }}</h3>
+                </div>
+                <div ng-if="ZC.orangePoints > ZC.purplePoints">
+                    <h1 class='orange'>ORANGE</h1>
+                    <h3 class="orange">Bouncer: {{ ZC.orangeBouncer }}, Catcher: {{ ZC.orangeCatcher }}</h3>
+                </div>
+
+                <button ng-click="ZC.startGame()" class="btn-default btn-lg btn-block">New Game</button>
             </section>
     </div>
 </body>
