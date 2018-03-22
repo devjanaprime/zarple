@@ -1,0 +1,34 @@
+{
+  "name": "zarple",
+  "version": "1.0.0",
+  "description": "a simple web backend for a party game I'm  making",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devjanaprime/zarple.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "angularjs",
+    "mongo",
+    "MEAN",
+    "bootstrap"
+  ],
+  "author": "@devjana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devjanaprime/zarple/issues"
+  },
+  "homepage": "https://github.com/devjanaprime/zarple#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11"
+  }
+}
