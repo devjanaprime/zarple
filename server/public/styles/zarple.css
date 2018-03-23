@@ -9,3 +9,9 @@ body{
 .orange{
     color: orange;
 }
+
+.howToImage{
+    border-style: solid;
+    border-color: navy;
+    border-width: 2px;
+}
