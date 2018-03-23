@@ -94,7 +94,7 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
         } // end empty name(s)
     }; // end startGame
 
-    vm.showNewGame = () => {
+    vm.startNewGame = () => {
         vm.gameState = 0;
     }; // end showNewGame
 
