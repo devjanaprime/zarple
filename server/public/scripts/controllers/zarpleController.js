@@ -8,6 +8,19 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
     let maxTeams = 2;
     let targets = [ false, false, false, false, false, false ];
     vm.penalty = 0;
+
+    vm.abandonGame = () =>{
+        vm.purplePoints = 0;
+        vm.orangePoints = 0;
+        vm.gameState = INPROGRESS;
+        vm.turn=0;
+        vm.orangeTargets = [ false, false, false, false ];
+        vm.purpleTargets = [ false, false, false, false ];
+        targets = [ false, false, false, false, false, false ];
+        vm.clearTargets();
+        vm.gameState = START;
+    }; // end abandonGame
+
     vm.checkForWinner = () => {
         if( vm.purplePoints >= vm.maxPoints || vm.orangePoints >= vm.maxPoints ){
             vm.gameState = END; 

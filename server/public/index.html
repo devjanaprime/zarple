@@ -57,16 +57,17 @@
                     </div>
                     <hr>
                     <div class="container">
-                        <img src="images/target1.png" width="32%" ng-click="ZC.targetClick( 0 )" id="target0" style="filter: blur( 9px );">
-                        <img src="images/target2.png" width="32%" ng-click="ZC.targetClick( 1 )" id="target1" style="filter: blur( 9px );">
-                        <img src="images/wallTarget.png" width="32%" ng-click="ZC.targetClick( 4 )" id="target4" style="filter: blur( 9px );">
-                        <img src="images/target3.png" width="32%" ng-click="ZC.targetClick( 2 )" id="target2" style="filter: blur( 9px );">
-                        <img src="images/target4.png" width="32%" ng-click="ZC.targetClick( 3 )" id="target3" style="filter: blur( 9px );">
-                        <img src="images/cup.png" width="32%" ng-click="ZC.targetClick( 5 )" id="target5" style=" filter: blur( 9px );">
+                        <img src="images/target1.png" width="32%" ng-click="ZC.targetClick( 0 )" id="target0" style="filter: grayscale( 100% ); filter: blur( 9px );">
+                        <img src="images/target2.png" width="32%" ng-click="ZC.targetClick( 1 )" id="target1" style="filter: grayscale( 100% ); filter: blur( 9px );">
+                        <img src="images/wallTarget.png" width="32%" ng-click="ZC.targetClick( 4 )" id="target4" style="filter: grayscale( 100% ); filter: blur( 9px );">
+                        <img src="images/target3.png" width="32%" ng-click="ZC.targetClick( 2 )" id="target2" style="filter: grayscale( 100% ); filter: blur( 9px );">
+                        <img src="images/target4.png" width="32%" ng-click="ZC.targetClick( 3 )" id="target3" style="filter: grayscale( 100% ); filter: blur( 9px );">
+                        <img src="images/cup.png" width="32%" ng-click="ZC.targetClick( 5 )" id="target5" style="filter: grayscale( 100% ); filter: blur( 9px );">
                     </div>
                     <hr>
                     <button ng-click="ZC.finishTurn()" class="btn-default btn-lg btn-block">Finish Turn</button>
                     <button ng-click="ZC.talkShit()" class="btn-default btn-lg btn-block">Talk Shit</button>
+                    <button ng-click="ZC.abandonGame()" class="btn-default btn-lg btn-block">Abandon Game</button>
             </section>
             <section id="gameEndSecion"  ng-if="ZC.gameState == 2">
                 <h2>Winner!</h2>
