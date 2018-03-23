@@ -18,6 +18,7 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
         for( let i=0; i< targets.length; i++ ){
             let targetName = '#target' + i;
             angular.element( document.querySelector( targetName ) ).css( 'filter', 'grayscale( 100% )' );
+            angular.element( document.querySelector( targetName ) ).css( 'filter', 'blur( 9px )' );
         }
     };
 
@@ -118,10 +119,12 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
         for( let i=0; i< targets.length; i++ ){
             let targetName = '#target' + i;
             if( targets[i] ){
-                angular.element( document.querySelector( targetName ) ).css( 'filter', 'grayscale( 0% )' );
+                angular.element( document.querySelector( targetName ) ).css( 'filter', 'grayscale( 0% )' );    
+                angular.element( document.querySelector( targetName ) ).css( 'filter', 'blur( 0px )' );
             }
             else{
-                angular.element( document.querySelector( targetName ) ).css( 'filter', 'grayscale( 100% )' );
+                angular.element( document.querySelector( targetName ) ).css( 'filter', 'grayscale( 100% )' );    
+                angular.element( document.querySelector( targetName ) ).css( 'filter', 'blur( px )' );
             }
         }
     }
