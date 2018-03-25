@@ -23,7 +23,7 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
 
     vm.checkForWinner = () => {
         if( vm.purplePoints >= vm.maxPoints || vm.orangePoints >= vm.maxPoints ){
-            vm.gameState = END; 
+            vm.gameState = END;
         }
     }; //end check for winner
 
@@ -53,7 +53,7 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
                         alert( 'All drums hit! 3 pt BONUS for Purple' );
                         turnPoints+=3;
                     }
-                } 
+                }
             }
             turnPoints -= vm.penalty;
             vm.purplePoints += turnPoints;
@@ -66,7 +66,7 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
                         alert( 'All drums hit! 3 pt BONUS for Orange' );
                         turnPoints+=3;
                     }
-                } 
+                }
             }
             turnPoints -= vm.penalty;
             vm.orangePoints += turnPoints;
@@ -130,10 +130,10 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
         // update targets visuals
         for( let i=0; i< targets.length; i++ ){
             let targetName = '#target' + i;
-            if( targets[i] ){\ 
+            if( targets[i] ){ 
                 angular.element( document.querySelector( targetName ) ).css( 'filter', 'blur( 0px )' );
             }
-            else{   
+            else{
                 angular.element( document.querySelector( targetName ) ).css( 'filter', 'blur( px )' );
             }
         }
