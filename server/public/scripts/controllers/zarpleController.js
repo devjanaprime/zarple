@@ -4,6 +4,7 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
     const INPROGRESS = 1;
     const END = 2;
     const HOW = 3;
+    const SETUP = 4;
     vm.gameState = START;
     let maxTeams = 2;
     let targets = [ false, false, false, false, false, false ];
@@ -84,6 +85,10 @@ myApp.controller( 'ZarpleController', [ 'ZarpleService', function( ZarpleService
     vm.showHelp = () => {
         vm.gameState = 3;
     }; // end showHelp
+
+    vm.showSetup = () => {
+        vm.gameState = 4;
+    } // end showSetup
 
     vm.startGame = () => {
         if( vm.purpleBouncer && vm.purpleCatcher && vm.orangeBouncer && vm.orangeCatcher){

@@ -15,7 +15,9 @@
 <body ng-app="myApp" ng-controller="ZarpleController as ZC">
     <div class='container'>
             <img src='images/zarpleLogo.png' width="100%">
+            <button ng-click="ZC.showSetup()" ng-if="ZC.gameState != 4" class="btn-default btn-block">Setup</button>
             <button ng-click="ZC.showHelp()" ng-if="ZC.gameState != 3" class="btn-default btn-block">How To Play</button>
+            <button ng-click="ZC.startNewGame()" ng-if="ZC.gameState != 0" class="btn-default btn-block">Back</button>
             <section id="newGameSection" ng-if="ZC.gameState == 0">
                 <h4>New Game to: <select class="form-control" ng-model="ZC.maxPointsIn">
                         <option>9</option>
@@ -26,14 +28,14 @@
 
                     <div class='col-sm-1'></div>
                     <div class='col-sm-5'>
-                        <h3>Team Purple</h3>
-                        <input type="text" ng-model="ZC.purpleBouncer">
-                        <input type="text" ng-model="ZC.purpleCatcher">
+                        <h3 class="purple">Team Purple</h3>
+                        <input type="text" placeholder="Bouncer" ng-model="ZC.purpleBouncer">
+                        <input type="text" placeholder="Catcher" ng-model="ZC.purpleCatcher">
                     </div>
                     <div class='col-sm-5'>
-                        <h3>Team Orange</h3>
-                        <input type="text" ng-model="ZC.orangeBouncer">
-                        <input type="text" ng-model="ZC.orangeCatcher">
+                        <h3 class="orange">Team Orange</h3>
+                        <input type="text" placeholder="Bouncer" ng-model="ZC.orangeBouncer">
+                        <input type="text" placeholder="Catcher" ng-model="ZC.orangeCatcher">
                     </div>
                     <div class='col-sm-1'></div>
                     <div></div>
@@ -84,7 +86,43 @@
             </section>
             <section id="howToPlaySection"  ng-if="ZC.gameState == 3">
                 <center>
-                        <button ng-click="ZC.startNewGame()" class="btn-default btn-block">Back</button>
+                    <h2>How to Play Zarple!</h2>
+                    <div class='container'>
+                        <hr>
+                        <p>2 teams (Purple and Orange) each with 2 players - a bouncer and a catcher</p>
+                        <p>Bouncer holds a ball and the catcher holds a cup. Both stand behind the floor stripe.</p>
+                        <img src='images/zarple_setup.png' width="90%">
+                        <hr>
+                        <p>Select the point total for winning the game.</p>
+                        <img src='images/zarple_selectPoints.png' width="90%">
+                        <hr>
+                        <p>Input user names and start the game.</p>
+                        <img src='images/zarple_inputUsers.png' width="90%">
+                        <hr>
+                        <p>Purple Team goes first while Orange team holds the device. Bouncer tries to bounce the ball off of a drum and into the rhombus for the Catcher to, well, catch.</p>
+                        <img src='images/zarple_bounceDrum.png' width="90%">
+                        <img src='images/zarple_bounceWall.png' width="90%">
+                        <img src='images/zarple_catch.png' width="90%">
+                        <hr>
+                        <p>When the turn is complete, select the targets (drum that was hit, rhombus if hit, cup if catch was made).</p>
+                        <p>If the Purple team talked shit during their turn hit the "Talk Shit" button too.</p>
+                        <p>Complete the turn with the "Finish Turn" button.</p>
+                        <img src='images/zarple_setTurn.png' width="90%">
+                        <hr>
+                        <p>Now it is Orange Team's turn. Repeat until someone reaches the point total needed for VICTORY.</p>
+                        <hr>
+                        <p>Bonuses for getting 3 or more targets & hitting all Drums</p>
+                        <p>Penalty for shit talking.</p>
+                        <img src='images/zarple_modifiers.png' width="90%">
+                        <h3>Have Fun!</h3>
+                        <button ng-click="ZC.startNewGame()" class="btn-default btn-lg btn-block">Let's Play</button>
+                        
+                    </div>
+                </center>
+            </section>
+            <section id="setupSection"  ng-if="ZC.gameState == 4">
+                <center>
+                    <h2>Setting up Zarple!</h2>
                     <div class='container'>
                         <hr>
                         <p>2 teams (Purple and Orange) each with 2 players - a bouncer and a catcher</p>
